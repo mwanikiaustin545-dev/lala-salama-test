@@ -1,0 +1,174 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Lala Salama — "Frosted Control Room" design system.
+ * Dark ink base, frosted glass panels, brand blue + teal accent,
+ * amber warnings, red danger. IBM Plex Sans / Mono.
+ */
+
+@theme inline {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+  --ink: oklch(0.18 0.03 262);
+  --surface: oklch(0.235 0.03 258);
+  --background: var(--ink);
+  --foreground: oklch(0.97 0.007 250);
+  --card: oklch(1 0 0 / 6%);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface);
+  --popover-foreground: var(--foreground);
+  --primary: oklch(0.57 0.2 259);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(1 0 0 / 8%);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(1 0 0 / 6%);
+  --muted-foreground: oklch(0.72 0.035 257);
+  --subtle: oklch(0.58 0.035 257);
+  --accent: oklch(0.68 0.12 182);
+  --accent-foreground: oklch(0.16 0.03 262);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.72 0.13 170);
+  --warning: oklch(0.72 0.16 62);
+  --info: oklch(0.66 0.16 250);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.57 0.2 259);
+  --chart-1: oklch(0.6 0.19 259);
+  --chart-2: oklch(0.68 0.12 182);
+  --chart-3: oklch(0.72 0.16 62);
+  --chart-4: oklch(0.6 0.22 27);
+  --chart-5: oklch(0.7 0.1 230);
+  --sidebar: oklch(0.2 0.03 260 / 80%);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: oklch(1 0 0 / 6%);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+  --gradient-brand: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@utility glass {
+  background-color: var(--card);
+  box-shadow: inset 0 0 0 1px var(--border);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+}
+
+@utility brand-gradient {
+  background-image: var(--gradient-brand);
+}
+
+@utility field {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: calc(var(--radius) - 2px);
+  background-color: oklch(1 0 0 / 5%);
+  box-shadow: inset 0 0 0 1px var(--input);
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  &::placeholder {
+    color: var(--subtle);
+  }
+  &:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 1px var(--ring), 0 0 0 3px oklch(0.57 0.2 259 / 25%);
+  }
+  & option {
+    background-color: var(--surface);
+  }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(24px, -18px, 0); }
+}
+@keyframes drift2 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-20px, 20px, 0); }
+}
+@utility animate-drift {
+  animation: drift 14s ease-in-out infinite;
+}
+@utility animate-drift-slow {
+  animation: drift2 18s ease-in-out infinite;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: black; }
+}
